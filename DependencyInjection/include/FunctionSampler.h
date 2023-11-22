@@ -3,15 +3,8 @@
 #include <vector>
 #include <functional>
 
-class SamplePointsGenerator 
-{
-    public:
-    SamplePointsGenerator();
 
-    virtual std::vector<double> generatePoints(double, double, int) = 0;
-};
-
-class LinearPointsGenerator : public SamplePointsGenerator
+class LinearPointsGenerator
 {
     public:
     LinearPointsGenerator();
@@ -19,7 +12,7 @@ class LinearPointsGenerator : public SamplePointsGenerator
     std::vector<double> generatePoints(double, double, int);
 };
 
-class RandomPointsGenerator : public SamplePointsGenerator
+class RandomPointsGenerator
 {
     public:
     RandomPointsGenerator();
@@ -35,7 +28,7 @@ class FunctionSampler
     std::vector<double> generateSamples(double, double, int n);
 
     private:
-    std::unique_ptr<LinearPointsGenerator> generator;
+    LinearPointsGenerator generator;
     std::function<double(double)> function;
 };
 

@@ -6,14 +6,7 @@
 
 int factorial(int n)
 {
-    if (n < 0)
-    {
-        throw std::domain_error("n! is invalid for n < 0");
-    }
-    else 
-    {
         return n == 0 ? 1 : n * factorial(n-1);
-    }
 }
 
 void printProcessedFile(std::string fileName)

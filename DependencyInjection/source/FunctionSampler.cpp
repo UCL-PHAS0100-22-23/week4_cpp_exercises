@@ -1,7 +1,6 @@
 #include "FunctionSampler.h"
 #include <random>
 
-SamplePointsGenerator::SamplePointsGenerator(){}
 LinearPointsGenerator::LinearPointsGenerator(){}
 RandomPointsGenerator::RandomPointsGenerator(){}
 
@@ -30,12 +29,12 @@ std::vector<double> RandomPointsGenerator::generatePoints(double a, double b, in
 
 FunctionSampler::FunctionSampler(std::function<double(double)> f) : function(f)
 {
-    generator = std::make_unique<LinearPointsGenerator>();
+    generator = LinearPointsGenerator();
 }
 
 std::vector<double> FunctionSampler::generateSamples(double a, double b, int n)
 {
-    std::vector<double> vec = generator->generatePoints(a, b, n);
+    std::vector<double> vec = generator.generatePoints(a, b, n);
     for(auto &v : vec)
     {   
         v = function(v);
